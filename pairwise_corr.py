@@ -6,7 +6,7 @@ value files without header, with rows of: WBID, name.
 Run from terminal as:
 python pairwise_corr.py file1 file2
 
-Writes pairwise correlation dataframe to output.txt
+Writes pairwise correlation dataframe to corr_output.txt
 
 Author: Porfirio Quintero-Cadena
 """
