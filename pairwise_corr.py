@@ -1,5 +1,5 @@
 """
-Computes gene pairwise correlation in RNAseq expression.
+Compute gene pairwise correlation in RNAseq expression.
 Takes two file names as arguments from stdin, which must be comma separated
 value files without header, with rows of: WBID, name.
 
