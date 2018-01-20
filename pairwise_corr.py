@@ -17,6 +17,7 @@ import pandas as pd
 
 # RNAseq data from Gerstein MB et al. (2010) Science
 exp_dir = './WBPaper00037953_expTPM_ce.csv'
+#exp_dir = './data_James052017/meanTPM.csv'
 
 def add_exp_pairs(df, exp_table, ID, FPKM_to_TPM): 
     """
@@ -83,7 +84,7 @@ def compute_corr(self, other):
 
     return this.corrwith(other, axis=1) 
 
-def pairwise_corr(gene_list1, gene_list2, remove_self_pairs=True):
+def pairwise_corr(gene_list1, gene_list2, exp_dir, remove_self_pairs=False):
     """
     Computes pairwise correlation between two lists of genes
 
@@ -120,10 +121,10 @@ def pairwise_corr(gene_list1, gene_list2, remove_self_pairs=True):
 
 # Get gene lists
 files = sys.argv
-gene_list1 = pd.read_csv(files[1], header=0, names=['wbid','gname'])
-gene_list2 = pd.read_csv(files[2], header=0, names=['wbid','gname'])
+gene_list1 = pd.read_csv(files[1], header=None, names=['wbid','gname'])
+gene_list2 = pd.read_csv(files[2], header=None, names=['wbid','gname'])
 # Compute correlation
-corrs = pairwise_corr(gene_list1, gene_list2)
+corrs = pairwise_corr(gene_list1, gene_list2, exp_dir)
 # Write output
 corrs.to_csv('corr_output.txt', index=False)
 print('Output written to corr_output.txt')
